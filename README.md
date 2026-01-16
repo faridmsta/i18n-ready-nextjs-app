@@ -1,36 +1,143 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+---
 
-## Getting Started
+# 🌐 i18n-Ready Next.js App
 
-First, run the development server:
+A starter template for building **multilingual (i18n) Next.js applications**. This template provides a clean structure, language-based routing, and ready-to-use translations.
+
+---
+
+## 🚀 Features
+
+* Fully compatible with **Next.js 16+**
+* Built-in **internationalization (i18n) support**
+* **Language-based routing** for SEO-friendly URLs
+* Pre-configured translation files for **Azerbaijani (AZ)** and **English (EN)**
+* Easy to extend with new languages
+
+---
+
+## ⚡ Installation & Setup
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/faridmsta/i18n-ready-nextjs-app.git
+cd i18n-ready-nextjs-app
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+# or
+yarn
+```
+
+### 3. Start the development server
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open your browser:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🌍 Supported Languages
 
-To learn more about Next.js, take a look at the following resources:
+| Language    | Code |
+| ----------- | ---- |
+| Azerbaijani | az   |
+| English     | en   |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+All translation files are located in:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+/messages
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔗 Language-Based Routing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Pages are served based on the active language:
+
+```
+/az/about   → Azerbaijani
+/en/about   → English
+```
+
+Each `[lang]/` folder renders pages for that specific locale.
+
+---
+
+## 🛠 Next Steps / Improvements
+
+* Add more languages
+* Integrate **Tailwind CSS** or other UI libraries
+* Add **CMS support** (Sanity, Strapi, etc.) for dynamic content
+* Improve **SEO and metadata handling**
+
+---
+
+## 📚 Resources / References
+
+For a detailed guide on Next.js internationalization, see:
+[Next.js i18n Tutorial](https://i18nexus.com/tutorials/nextjs/next-intl)
+
+---
+
+## ➕ Adding a New Language
+
+1. **Update locales**
+   Open `\i18n\routing.ts` and add your new language code:
+
+   ```ts
+   locales: ['en', 'az'], // => ['en', 'az', 'tr']
+   ```
+
+2. **Add a translation file**
+   In the `/messages` folder, create a new JSON file for your language:
+
+   ```text
+   messages/
+   ├─ az.json
+   ├─ en.json
+   └─ tr.json   <- New language
+   ```
+
+   Example `tr.json`:
+
+   ```json
+   {
+     "hello": "Merhabalar"
+   }
+   ```
+
+3. **Use translations in components**
+
+   ```tsx
+   import { useTranslation } from 'next-intl';
+
+   const { t } = useTranslation('common');
+   <h1>{t('hello')}</h1>
+   ```
+
+4. **Test your new language**
+   Start the dev server and navigate to:
+
+   ```
+   /tr
+   ```
+
+Your app should now display Turkish translations.
+
+---
+
+
